@@ -28,6 +28,7 @@ public class Piece : NewMonoBehaviour
         this.LoadComponents();
         this.ResetValues();
     }
+     
 
     protected virtual void LoadSide()
     {
