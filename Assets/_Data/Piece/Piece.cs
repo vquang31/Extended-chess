@@ -6,28 +6,28 @@ using static Const;
 
 public class Piece : NewMonoBehaviour
 {
-    private int side;
+    private int _side;
 
-    protected int maxHp;
+    protected int _maxHp;
 
-    protected int hp;
+    protected int _hp;
 
-    protected int attackPoint;
+    protected int _attackPoint;
 
-    protected int jumpPoint;
+    protected int _jumpPoint;
+
+    // height range attack of piece
+    protected int _heightRangeAttack;
 
     //private int movePoint;
     //protected int speed;
 
     protected List<Effect> effects;
 
-
-
     protected override void Reset()
     {
         this.LoadComponents();
         this.ResetValues();
-
     }
      
 
@@ -51,22 +51,22 @@ public class Piece : NewMonoBehaviour
 
          var stats = Const.DEFAULT_STATS[pieceType];
         // Gán giá trị cho các thuộc tính
-        this.maxHp = stats.MaxHp;
-        this.hp = this.maxHp;
-        this.attackPoint = stats.AttackPoint;
-        this.jumpPoint = stats.JumpPoint;
-
+        this._maxHp = stats.MaxHp;
+        this._hp = this._maxHp;
+        this._attackPoint = stats.AttackPoint;
+        this._jumpPoint = stats.JumpPoint;
+        this._heightRangeAttack = stats.RangeAttack;
 
         this.effects = new List<Effect>();
     }
 
 
-    public virtual List<Vector2Int> GetValidMoves()
+    protected virtual List<Vector2Int> GetValidMoves()
     {
         return new List<Vector2Int>();
     }
 
-    public virtual List<Vector2Int> GetValidAttacks(int side)
+    protected virtual List<Vector2Int> GetValidAttacks(int side)
     {
         return new List<Vector2Int>();
     }
